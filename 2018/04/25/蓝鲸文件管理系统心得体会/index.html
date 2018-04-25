@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="WhaleCTF writeup Web," />
 
 
 
@@ -79,17 +79,23 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="description" content="心得体会 绕过addslashes()的方法 宽字节注入 二次注入 url编码，json，base64编码 反解压、反转义、数字型文件上传的三个关键点 上传 解析 访问代码审计 先看common.inc.php这样的全局配置文件 上传功能的逻辑 改名功能的逻辑 个人感觉在解决CTF问题中理清Web应用的逻辑是极其重要的一点，虽然看起来很麻烦，但是实际上却能节省时间，能避免走弯路，思考的逻辑也能更清">
+<meta name="keywords" content="WhaleCTF writeup Web">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2018/04/24/hello-world/index.html">
+<meta property="og:title" content="蓝鲸文件系统心得体会">
+<meta property="og:url" content="http://yoursite.com/2018/04/25/蓝鲸文件管理系统心得体会/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="心得体会 绕过addslashes()的方法 宽字节注入 二次注入 url编码，json，base64编码 反解压、反转义、数字型文件上传的三个关键点 上传 解析 访问代码审计 先看common.inc.php这样的全局配置文件 上传功能的逻辑 改名功能的逻辑 个人感觉在解决CTF问题中理清Web应用的逻辑是极其重要的一点，虽然看起来很麻烦，但是实际上却能节省时间，能避免走弯路，思考的逻辑也能更清">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-04-24T02:59:34.202Z">
+<meta property="og:image" content="https://github.com/Anthem9/vnote/raw/master/vnotebook/Web/wp/WhaleCTF/%E8%93%9D%E9%B2%B8%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fwp/_v_images/_1_1523261937_9730.jpg">
+<meta property="og:image" content="https://github.com/Anthem9/vnote/raw/master/vnotebook/Web/wp/WhaleCTF/%E8%93%9D%E9%B2%B8%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fwp/_v_images/_1524205523_26421.png">
+<meta property="og:image" content="https://github.com/Anthem9/vnote/raw/master/vnotebook/Web/wp/WhaleCTF/%E8%93%9D%E9%B2%B8%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fwp/_v_images/_1524205576_1773.png">
+<meta property="og:image" content="https://github.com/Anthem9/vnote/raw/master/vnotebook/Web/wp/WhaleCTF/%E8%93%9D%E9%B2%B8%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fwp/_v_images/_1524205600_12431.png">
+<meta property="og:updated_time" content="2018-04-25T01:06:38.487Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="蓝鲸文件系统心得体会">
+<meta name="twitter:description" content="心得体会 绕过addslashes()的方法 宽字节注入 二次注入 url编码，json，base64编码 反解压、反转义、数字型文件上传的三个关键点 上传 解析 访问代码审计 先看common.inc.php这样的全局配置文件 上传功能的逻辑 改名功能的逻辑 个人感觉在解决CTF问题中理清Web应用的逻辑是极其重要的一点，虽然看起来很麻烦，但是实际上却能节省时间，能避免走弯路，思考的逻辑也能更清">
+<meta name="twitter:image" content="https://github.com/Anthem9/vnote/raw/master/vnotebook/Web/wp/WhaleCTF/%E8%93%9D%E9%B2%B8%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fwp/_v_images/_1_1523261937_9730.jpg">
 
 
 
@@ -119,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/04/24/hello-world/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/04/25/蓝鲸文件管理系统心得体会/"/>
 
 
 
 
 
-  <title>Hello World | Hexo</title>
+  <title>蓝鲸文件系统心得体会 | Hexo</title>
   
 
 
@@ -232,7 +238,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/24/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/25/蓝鲸文件管理系统心得体会/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -249,7 +255,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World</h1>
+          <h1 class="post-title" itemprop="name headline">蓝鲸文件系统心得体会</h1>
         
 
         <div class="post-meta">
@@ -261,8 +267,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-24T10:59:34+08:00">
-                2018-04-24
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-25T09:05:00+08:00">
+                2018-04-25
               </time>
             
 
@@ -299,15 +305,23 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <h1 id="心得体会"><a href="#心得体会" class="headerlink" title="心得体会"></a>心得体会</h1><p><img src="https://github.com/Anthem9/vnote/raw/master/vnotebook/Web/wp/WhaleCTF/%E8%93%9D%E9%B2%B8%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fwp/_v_images/_1_1523261937_9730.jpg" alt="1"></p>
+<h2 id="绕过addslashes-的方法"><a href="#绕过addslashes-的方法" class="headerlink" title="绕过addslashes()的方法"></a>绕过addslashes()的方法</h2><ul>
+<li>宽字节注入</li>
+<li>二次注入</li>
+<li>url编码，json，base64编码</li>
+<li>反解压、反转义、数字型<h2 id="文件上传的三个关键点"><a href="#文件上传的三个关键点" class="headerlink" title="文件上传的三个关键点"></a>文件上传的三个关键点</h2></li>
+<li>上传</li>
+<li>解析</li>
+<li>访问<h2 id="代码审计"><a href="#代码审计" class="headerlink" title="代码审计"></a>代码审计</h2></li>
+<li>先看common.inc.php这样的全局配置文件</li>
+<li>上传功能的逻辑<br><img src="https://github.com/Anthem9/vnote/raw/master/vnotebook/Web/wp/WhaleCTF/%E8%93%9D%E9%B2%B8%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fwp/_v_images/_1524205523_26421.png" alt=""></li>
+<li>改名功能的逻辑<br><img src="https://github.com/Anthem9/vnote/raw/master/vnotebook/Web/wp/WhaleCTF/%E8%93%9D%E9%B2%B8%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fwp/_v_images/_1524205576_1773.png" alt=""></li>
+<li>个人感觉在解决CTF问题中理清Web应用的逻辑是极其重要的一点，虽然看起来很麻烦，但是实际上却能节省时间，能避免走弯路，思考的逻辑也能更清晰。<h2 id="思路和构造"><a href="#思路和构造" class="headerlink" title="思路和构造"></a>思路和构造</h2>思路：利用update注入将拓展名改为空，再将新文件名改为*.php即可</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> <span class="string">'file'</span> <span class="keyword">set</span> <span class="string">'filename'</span> = <span class="string">'新文件名'</span>, <span class="string">'oldname'</span> = <span class="string">'查询文件名'</span> <span class="keyword">where</span> <span class="string">'fid'</span> = fid</span><br><span class="line"><span class="keyword">update</span> <span class="string">'flie'</span> <span class="keyword">set</span> <span class="string">'filename'</span> = <span class="string">'Trojan.jpg'</span>, <span class="string">'oldname'</span> = <span class="string">''</span>,extension=<span class="string">''</span> <span class="keyword">where</span> <span class="string">'fid'</span> = fid</span><br></pre></td></tr></table></figure>
+<p>更新语句是用<code>fid</code>字段进行定位的，在<code>rename.php</code>的<code>oldname</code>字段中输入<code>’,extension=’</code>由于转义并不能起到注入的效果，但能找到fid。</p>
+<p><img src="https://github.com/Anthem9/vnote/raw/master/vnotebook/Web/wp/WhaleCTF/%E8%93%9D%E9%B2%B8%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fwp/_v_images/_1524205600_12431.png" alt=""></p>
 
       
     </div>
@@ -323,6 +337,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/WhaleCTF-writeup-Web/" rel="tag"># WhaleCTF writeup Web</a>
+          
+        </div>
+      
 
       
       
@@ -332,15 +352,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/04/24/2018-4-24-新Blog/" rel="next" title="2018.4.24 新Blog">
+                <i class="fa fa-chevron-left"></i> 2018.4.24 新Blog
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/04/24/hexo-d没有反应的坑/" rel="prev" title="hexo d没有反应的坑">
-                hexo d没有反应的坑 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -463,7 +483,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#心得体会"><span class="nav-number">1.</span> <span class="nav-text">心得体会</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#绕过addslashes-的方法"><span class="nav-number">1.1.</span> <span class="nav-text">绕过addslashes()的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件上传的三个关键点"><span class="nav-number">1.2.</span> <span class="nav-text">文件上传的三个关键点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码审计"><span class="nav-number">1.3.</span> <span class="nav-text">代码审计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路和构造"><span class="nav-number">1.4.</span> <span class="nav-text">思路和构造</span></a></li></ol></li></ol></div>
             
 
           </div>
