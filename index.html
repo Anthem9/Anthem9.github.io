@@ -229,6 +229,290 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/26/Linux-find命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/26/Linux-find命令/" itemprop="url">Linux-find命令</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-26T19:28:26+08:00">
+                2018-04-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="find命令"><a href="#find命令" class="headerlink" title="find命令"></a>find命令</h1><h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><ul>
+<li><p>列出当前目录及子目录下所有文件和文件夹</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find .</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在<code>/home</code>目录下查找以<code>.txt</code>结尾的文件名</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find /home -name <span class="string">"*.txt"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>同上，但忽略大小写</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find /home -iname <span class="string">"*.txt"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>注意，虽然<code>name</code>是一个完整的单词，但前面只有一条横线</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/26/进入docker容器/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/26/进入docker容器/" itemprop="url">进入docker容器</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-26T19:25:16+08:00">
+                2018-04-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="进入docker容器"><a href="#进入docker容器" class="headerlink" title="进入docker容器"></a>进入docker容器</h1><p>进入<code>Docker</code>容器比较常见的几种做法如下：</p>
+<ul>
+<li>使用<code>docker attach</code></li>
+<li>使用<code>docker exec</code><h2 id="docker-run"><a href="#docker-run" class="headerlink" title="docker run"></a>docker run</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- -d, --detach=<span class="literal">false</span> Run container <span class="keyword">in</span> background and <span class="built_in">print</span> container ID</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>如果要<code>attach</code>交互使用，考虑</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-i, --interactive=<span class="literal">false</span> Keep STDIN open even <span class="keyword">if</span> not attached</span><br><span class="line">-t, --tty=<span class="literal">false</span> Allocate a pseudo-TTY</span><br></pre></td></tr></table></figure>
+<h2 id="使用docker-attach"><a href="#使用docker-attach" class="headerlink" title="使用docker attach"></a>使用docker attach</h2><ul>
+<li><p><code>Docker</code>提供了<code>attach</code>命令来进入<code>Docker</code>容器。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ docker attach --<span class="built_in">help</span></span><br><span class="line"></span><br><span class="line">Usage:  docker attach [OPTIONS] CONTAINER</span><br><span class="line"></span><br><span class="line">Attach <span class="built_in">local</span> standard input, output, and error streams to a running container</span><br><span class="line"></span><br><span class="line">Options:</span><br><span class="line">      --detach-keys string   Override the key sequence <span class="keyword">for</span> detaching a</span><br><span class="line">                             container</span><br><span class="line">      --no-stdin             Do not attach STDIN</span><br><span class="line">      --sig-proxy            Proxy all received signals to the process</span><br><span class="line">                             (default <span class="literal">true</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>先创建一个守护态（后台运行）的<code>Docker</code>容器，就是加<code>-itd</code>参数</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -p 8080:8080 -itd webgoat/webgoat-7.1</span><br><span class="line">a951769562560aa3c9e214347a96c5dc2676bf3ed06773fc5b8e3d617042519e</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>然后使用<code>docker ps</code>查看到该容器信息，复制<code>CONTAINER ID</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ docker ps</span><br><span class="line">CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS              PORTS                    NAMES</span><br><span class="line">ca41f316c698        webgoat/webgoat-7.1   <span class="string">"java -Djava.securit…"</span>   10 hours ago        Up 10 hours         0.0.0.0:8080-&gt;8080/tcp   cranky_almeida</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>最后使用<code>docker attach</code>进入该容器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker attach ca41f316c698</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>然后你就会发现卡住了…</p>
+<h3 id="为什么执行-docker-attach-卡住了"><a href="#为什么执行-docker-attach-卡住了" class="headerlink" title="为什么执行 docker attach 卡住了?"></a>为什么执行 docker attach 卡住了?</h3><p>首先要明确的是 <code>docker attach</code>不是一个用来进入容器的命令, 或者说他不是用来在容器内运行一个 <code>bash(shell)</code>的命令, 它是用来连接到容器中运行中的进程, 也就是容器的 <code>CMD</code>, 容器内 <code>PID=1</code> 的那个进程, 如果这个进程没有 <code>stdout/stderr</code> 那么你将看不到任何输出, 如果它没有接收<code>stdin</code>你也无法发送指令给它. 这也就是为什么你运行一个<code>bash</code> 的容器, 就可以 <code>attach</code> 进去执行命令, 而你运行一个<code>mysql server</code> 的容器就无法操作的原因</p>
+</li>
+</ul>
+<h2 id="使用docker-exec"><a href="#使用docker-exec" class="headerlink" title="使用docker exec"></a>使用docker exec</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">$ docker <span class="built_in">exec</span> --<span class="built_in">help</span></span><br><span class="line"></span><br><span class="line">Usage:  docker <span class="built_in">exec</span> [OPTIONS] CONTAINER COMMAND [ARG...]</span><br><span class="line"></span><br><span class="line">Run a <span class="built_in">command</span> <span class="keyword">in</span> a running container</span><br><span class="line"></span><br><span class="line">Options:</span><br><span class="line">  -d, --detach               Detached mode: run <span class="built_in">command</span> <span class="keyword">in</span> the background</span><br><span class="line">      --detach-keys string   Override the key sequence <span class="keyword">for</span> detaching a</span><br><span class="line">                             container</span><br><span class="line">  -e, --env list             Set environment variables</span><br><span class="line">  -i, --interactive          Keep STDIN open even <span class="keyword">if</span> not attached</span><br><span class="line">      --privileged           Give extended privileges to the <span class="built_in">command</span></span><br><span class="line">  -t, --tty                  Allocate a pseudo-TTY</span><br><span class="line">  -u, --user string          Username or UID (format:</span><br><span class="line">                             &lt;name|uid&gt;[:&lt;group|gid&gt;])</span><br><span class="line">  -w, --workdir string       Working directory inside the container</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>查看容器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ docker ps</span><br><span class="line">CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS              PORTS                    NAMES</span><br><span class="line">ca41f316c698        webgoat/webgoat-7.1   <span class="string">"java -Djava.securit…"</span>   10 hours ago        Up 10 hours         0.0.0.0:8080-&gt;8080/tcp   cranky_almeida</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用<code>docker exec</code>进入该容器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it ca41f316c698 /bin/bash</span><br><span class="line">root@ca41f316c698:/<span class="comment">#</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/25/Docker入门/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1132,7 +1416,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1145,7 +1429,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
