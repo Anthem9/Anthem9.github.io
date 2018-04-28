@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="进入docker容器进入Docker容器比较常见的几种做法如下：  使用docker attach 使用docker execdocker run1- -d, --detach=false Run container in background and print container ID   如果要attach交互使用，考虑 12-i, --interactive=false Keep STDI">
+<meta name="description" content="进入docker容器进入Docker容器比较常见的几种做法如下：  使用docker attach 使用docker exec  docker run1- -d, --detach=false Run container in background and print container ID 如果要attach交互使用，考虑 12-i, --interactive=false Keep STDI">
 <meta name="keywords" content="docker 运维">
 <meta property="og:type" content="article">
 <meta property="og:title" content="进入docker容器">
 <meta property="og:url" content="http://yoursite.com/2018/04/26/进入docker容器/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="进入docker容器进入Docker容器比较常见的几种做法如下：  使用docker attach 使用docker execdocker run1- -d, --detach=false Run container in background and print container ID   如果要attach交互使用，考虑 12-i, --interactive=false Keep STDI">
+<meta property="og:description" content="进入docker容器进入Docker容器比较常见的几种做法如下：  使用docker attach 使用docker exec  docker run1- -d, --detach=false Run container in background and print container ID 如果要attach交互使用，考虑 12-i, --interactive=false Keep STDI">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-04-26T11:26:03.011Z">
+<meta property="og:updated_time" content="2018-04-26T11:31:27.259Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="进入docker容器">
-<meta name="twitter:description" content="进入docker容器进入Docker容器比较常见的几种做法如下：  使用docker attach 使用docker execdocker run1- -d, --detach=false Run container in background and print container ID   如果要attach交互使用，考虑 12-i, --interactive=false Keep STDI">
+<meta name="twitter:description" content="进入docker容器进入Docker容器比较常见的几种做法如下：  使用docker attach 使用docker exec  docker run1- -d, --detach=false Run container in background and print container ID 如果要attach交互使用，考虑 12-i, --interactive=false Keep STDI">
 
 
 
@@ -303,9 +303,9 @@
         <h1 id="进入docker容器"><a href="#进入docker容器" class="headerlink" title="进入docker容器"></a>进入docker容器</h1><p>进入<code>Docker</code>容器比较常见的几种做法如下：</p>
 <ul>
 <li>使用<code>docker attach</code></li>
-<li>使用<code>docker exec</code><h2 id="docker-run"><a href="#docker-run" class="headerlink" title="docker run"></a>docker run</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- -d, --detach=<span class="literal">false</span> Run container <span class="keyword">in</span> background and <span class="built_in">print</span> container ID</span><br></pre></td></tr></table></figure>
-</li>
+<li>使用<code>docker exec</code></li>
 </ul>
+<h2 id="docker-run"><a href="#docker-run" class="headerlink" title="docker run"></a>docker run</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- -d, --detach=<span class="literal">false</span> Run container <span class="keyword">in</span> background and <span class="built_in">print</span> container ID</span><br></pre></td></tr></table></figure>
 <p>如果要<code>attach</code>交互使用，考虑</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-i, --interactive=<span class="literal">false</span> Keep STDIN open even <span class="keyword">if</span> not attached</span><br><span class="line">-t, --tty=<span class="literal">false</span> Allocate a pseudo-TTY</span><br></pre></td></tr></table></figure>
 <h2 id="使用docker-attach"><a href="#使用docker-attach" class="headerlink" title="使用docker attach"></a>使用docker attach</h2><ul>
@@ -452,7 +452,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -465,7 +465,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
