@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="访问控制 基础知识," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="访问控制模型一访问控制的概念 访问控制，作为提供信息安全保障的主要手段，及最为突出的安全机制, 被广泛地应用于防火墙、文件访问、VPN及物理安全等多个方面。 所有这些技术可归诸于几类访问控制模型，本文将一一介绍并以实例说明，以帮助设计者在多变的环境中解决相关安全问题。 访问控制是信息安全保障机制的核心内容，它是实现数据保密性和完整性机制的主要手段。 访问控制是为了限制访问主体（或称为发起者，是一个">
+<meta name="keywords" content="访问控制 基础知识">
+<meta property="og:type" content="article">
+<meta property="og:title" content="访问控制模型一">
+<meta property="og:url" content="http://yoursite.com/2018/05/02/访问控制模型一/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="访问控制模型一访问控制的概念 访问控制，作为提供信息安全保障的主要手段，及最为突出的安全机制, 被广泛地应用于防火墙、文件访问、VPN及物理安全等多个方面。 所有这些技术可归诸于几类访问控制模型，本文将一一介绍并以实例说明，以帮助设计者在多变的环境中解决相关安全问题。 访问控制是信息安全保障机制的核心内容，它是实现数据保密性和完整性机制的主要手段。 访问控制是为了限制访问主体（或称为发起者，是一个">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://github.com/Anthem9/vnote/raw/master/vnotebook/WebGoat/Access_Control_Flaws/_v_images/_1525256809_605.png">
+<meta property="og:image" content="https://github.com/Anthem9/vnote/raw/master/vnotebook/WebGoat/Access_Control_Flaws/_v_images/_1525256836_10032.png">
+<meta property="og:image" content="https://github.com/Anthem9/vnote/raw/master/vnotebook/WebGoat/Access_Control_Flaws/_v_images/_1525256893_20596.png">
+<meta property="og:image" content="https://github.com/Anthem9/vnote/raw/master/vnotebook/WebGoat/Access_Control_Flaws/_v_images/_1525256928_28770.png">
+<meta property="og:image" content="https://github.com/Anthem9/vnote/raw/master/vnotebook/WebGoat/Access_Control_Flaws/_v_images/_1525258602_21653.png">
+<meta property="og:updated_time" content="2018-05-02T14:53:14.099Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="访问控制模型一">
+<meta name="twitter:description" content="访问控制模型一访问控制的概念 访问控制，作为提供信息安全保障的主要手段，及最为突出的安全机制, 被广泛地应用于防火墙、文件访问、VPN及物理安全等多个方面。 所有这些技术可归诸于几类访问控制模型，本文将一一介绍并以实例说明，以帮助设计者在多变的环境中解决相关安全问题。 访问控制是信息安全保障机制的核心内容，它是实现数据保密性和完整性机制的主要手段。 访问控制是为了限制访问主体（或称为发起者，是一个">
+<meta name="twitter:image" content="https://github.com/Anthem9/vnote/raw/master/vnotebook/WebGoat/Access_Control_Flaws/_v_images/_1525256809_605.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/05/02/访问控制模型一/"/>
+
+
+
+
+
+  <title>访问控制模型一 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/02/访问控制模型一/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">访问控制模型一</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-02T22:35:28+08:00">
+                2018-05-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="访问控制模型一"><a href="#访问控制模型一" class="headerlink" title="访问控制模型一"></a>访问控制模型一</h1><h2 id="访问控制的概念"><a href="#访问控制的概念" class="headerlink" title="访问控制的概念"></a>访问控制的概念</h2><ul>
+<li><strong>访问控制</strong>，作为提供信息安全保障的主要手段，及最为突出的安全机制, 被广泛地应用于防火墙、文件访问、VPN及物理安全等多个方面。 所有这些技术可归诸于几类访问控制模型，本文将一一介绍并以实例说明，以帮助设计者在多变的环境中解决相关安全问题。</li>
+<li><strong>访问控制</strong>是信息安全保障机制的核心内容，它是实现<strong>数据保密性</strong>和<strong>完整性</strong>机制的主要手段。</li>
+<li><strong>访问控制</strong>是为了限制<strong>访问主体</strong>（或称为发起者，是一个主动的实体；如用户、进程、服务等），对<strong>访问客体</strong>（需要保护的资源）的访问权限，从而使计算机系统在合法范围内使用；</li>
+<li><strong>访问控制</strong>机制决定用户及代表一定用户利益的程序能做什么，及做到什么程度。</li>
+</ul>
+<h3 id="访问控制的两个重要过程"><a href="#访问控制的两个重要过程" class="headerlink" title="访问控制的两个重要过程"></a>访问控制的两个重要过程</h3><ul>
+<li>通过”鉴别（<code>authentication</code>）”来检验主体的合法身份</li>
+<li>通过”授权（<code>authorization</code>）”来限制用户对资源的访问级别</li>
+</ul>
+<h3 id="访问行为"><a href="#访问行为" class="headerlink" title="访问行为"></a>访问行为</h3><ul>
+<li>访问包括读取数据，更改数据，运行程序，发起连接等。</li>
+</ul>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><ul>
+<li>访问控制服务主要由<strong>访问控制模型</strong>和<strong>策略描述语言</strong>组成 </li>
+<li>常见的访问控制模型主要是自主访问控制 <code>DAC</code>、强制访问控制 <code>MAC</code>、基于角色的访问控制 <code>RBAC</code>。 </li>
+<li><strong>访问策略规则</strong>以及<strong>访问主体</strong>和<strong>访问客体</strong>三者是访问控制系统的基本条件。 </li>
+<li><strong>访问主体</strong>：在信息环境中，对目标信息的获取通常是由访问主体发起的，访问主体需要遵循相应的规则，从而可以访问一定的客体。通常访问主体是用户开发和使用的应用程度。 </li>
+<li><strong>访问客体</strong>：在信息系统中，客体可以被主体进行一定的访问行为操作。 </li>
+<li><strong>安全访问策略</strong>：是为了保护信息安全性而制定的策略规则，规定了主体是否可以访问客体以及可以使用何种方式对客体进行访问。 </li>
+<li>经典的三大模型<code>DAC</code>、<code>MAC</code>、<code>RBAC</code>，虽然现在在学术界这三大模型都遭到嫌弃，但是现有的访问控制模型其实都是在这三大模型上改改写写的。</li>
+</ul>
+<h2 id="自主访问控制（DAC-Discretionary-Access-Control）"><a href="#自主访问控制（DAC-Discretionary-Access-Control）" class="headerlink" title="自主访问控制（DAC,Discretionary Access Control）"></a>自主访问控制（DAC,Discretionary Access Control）</h2><ul>
+<li>自主访问控制（<code>DAC</code>,<code>Discretionary Access Control</code>）比较基础和常用，在多种计算机系统中都会提供自主访问控制。</li>
+<li>此种访问控制的基本思想是：访问控制中访问客体的拥有者具有很大的权限，能够决定客体是否可以被相应主体访问，并且可以迁移和转让访问客体。</li>
+<li>在 <code>DAC</code> 模型中，访问权限是否进行授权需要根据主体情况并结合具体的安全规则从而做出判断。</li>
+<li><code>DAC</code> 有<strong>访问控制矩阵</strong>和<strong>访问控制列表</strong>两种实施方式。 <h3 id="访问控制矩阵"><a href="#访问控制矩阵" class="headerlink" title="访问控制矩阵"></a>访问控制矩阵</h3>访问控制矩阵（<code>ACM</code>：<code>Acess Control Matrix</code>）中使用矩阵的列和行来分别对应访问主体和访问客体，二者交叉位置的元素则代表着相应的主体对客体的操作规则。<br><img src="https://github.com/Anthem9/vnote/raw/master/vnotebook/WebGoat/Access_Control_Flaws/_v_images/_1525256809_605.png" alt=""><h3 id="访问控制列表"><a href="#访问控制列表" class="headerlink" title="访问控制列表"></a>访问控制列表</h3></li>
+<li>访问控制列表（<code>ACL</code>：<code>Access Control List</code>）是前面说介绍矩阵的一种变形。</li>
+<li>列表对应某个固定客体，其中的列表示能够对此客体进行一定操作的主体。</li>
+<li>第二列访问属性则表示二者对应的具体操作。如表 所示，是上表中客体 X 所对应的等价控制矩阵转化。</li>
+<li>通过 <code>ACL</code> 可以方便的理解和查询某个客体所对应的特定权限主体，适用于稳定的主客体不太复杂的系统。在信息系统发生较大改变时，需要重新对访问控制列表进行相应修改，容易影响系统安全性。</li>
+</ul>
+<p><img src="https://github.com/Anthem9/vnote/raw/master/vnotebook/WebGoat/Access_Control_Flaws/_v_images/_1525256836_10032.png" alt=""></p>
+<p><code>DAC</code> 在进行授权时相对灵活，访问控制中客体的所有者可以将其所有用的权限进行转移，从而具有很好的灵活性，适用范围比较广，因而可以用于多个系统。但是，<code>DAC</code> 存在几个缺点：</p>
+<ul>
+<li>由于权限可以进行委托，会导致资源管理比较分散，同时增加了系统的风险性。 </li>
+<li>不能够适应多域安全策略环境，以及在环境策略变化的情况下无法保证整体的安全性。 </li>
+<li>访问控制权限容易发生转移，同时，在主体与客体数量较多时，会给系统带来巨大开销，导致效率低下，<strong>不能很好的适应交大规模的网络环境</strong>。</li>
+</ul>
+<h2 id="强制访问控制（MAC）"><a href="#强制访问控制（MAC）" class="headerlink" title="强制访问控制（MAC）"></a>强制访问控制（MAC）</h2><ul>
+<li>强制访问控制（<code>MAC</code>：<code>Mandatory Acess Control</code>）在十八世纪七十年代就已经提出，在 <code>Multics</code> 模型上得到最早使用和验证，与前面介绍的自主访问控制相比，定义规则和策略相对更加严格。</li>
+<li><code>MAC</code> 设计的基本思想是：在访问控制系统中，主体和客体被分配一定的安全属性，然后系统对二者所拥有的属性关系进行一定的评价比较，从而确定是否进行访问。</li>
+<li>也就是说这是一种多级表示模型。比较关系来源于安全属性，并且用（安全级别，类型集合）这样的组合代表安全属性。</li>
+<li>类型集合是指一定的元素的集体，而安全等级则表示相应信息的保密等级。在系统中安全属性是由维护系统的管理人员进行配置的，或者是系统自动生成的，这种安全属性是不能随意被修改的，具有强制认可性。 </li>
+<li><code>MAC</code> 具有强制性和严格的单向不可逆性。</li>
+<li><code>MAC</code> 系统规定高级别主体可以得到低级别主体的信息，而反过来却行不通。</li>
+<li>如果主体<code>A</code> 的级别高于客体<code>B</code>，那么主体 <code>A</code> 可以读取客体<code>B</code> 中的信息和资源；如果主体 <code>A</code> 的级别低于主体 <code>B</code> 的级别，那么主体 <code>A</code> 可以对主体 <code>B</code> 进行一定的诸如写入的操作；如果主体 <code>A</code>和客体<code>B</code>的等级是相同的，那么主体<code>A</code> 和客体 <code>B</code> 之间不能进行任何读与写的操作。</li>
+<li>这意味着在 <code>MAC</code> 模型的信息始终遵循单向流通的规则，因而可以保证系统信息的安全。如图 所示。</li>
+</ul>
+<p><img src="https://github.com/Anthem9/vnote/raw/master/vnotebook/WebGoat/Access_Control_Flaws/_v_images/_1525256893_20596.png" alt=""></p>
+<p>强制访问控制中最具有代表性的就是 <code>BLP</code> 模型。</p>
+<h2 id="基于角色的访问控制（RBAC）"><a href="#基于角色的访问控制（RBAC）" class="headerlink" title="基于角色的访问控制（RBAC）"></a>基于角色的访问控制（RBAC）</h2><ul>
+<li>基于角色的访问控制（<code>RBAC</code>）是在上世纪九十年代被提出，是一种评估效果比较好的访问控制信息技。</li>
+<li>在此种模型中，主体与客体并不是直接发生联系，而是增加了角色这一层次，先将访问操作的权限匹配给某些角色，然后在将这些特定的角色指定给相应的主体，通过这种方式主体就得到了对客体的访问权限。</li>
+</ul>
+<p><img src="https://github.com/Anthem9/vnote/raw/master/vnotebook/WebGoat/Access_Control_Flaws/_v_images/_1525256928_28770.png" alt=""></p>
+<p>基于角色使得主体和客体之间的关系不是通过他们之间的映射来建立，而是中间有了周转，多了一个角色这个中转站。</p>
+<h4 id="RBAC模型简介"><a href="#RBAC模型简介" class="headerlink" title="RBAC模型简介"></a>RBAC模型简介</h4><p><img src="https://github.com/Anthem9/vnote/raw/master/vnotebook/WebGoat/Access_Control_Flaws/_v_images/_1525258602_21653.png" alt=""></p>
+<ul>
+<li>模型中主要定义了：用户(<code>User</code>)，角色(<code>Role</code>)和用户权限（<code>Permission</code>）三个主要实体，以及会话(<code>Session</code>)和限制(<code>Constraint</code>)的概念及其之间的关系。</li>
+<li>其中，权限是指针对信息系统的操作权利，不同的角色或者不同级别的角色被赋予不同的权限，系统用户又被赋予一定的(一个或多个)角色。从而用户与角色之间，角色和权限之间均是一个多对多的<br>关系，用户和权限之间则没有直接的关系，而是根据所具有的责任被赋予某种角色，从而拥有角色相<br>应的权限。其授权模型示意图如上图所示。</li>
+<li>在<code>RBAC</code>模型中，角色是一个相对的概念，用户与角色之间是多对多的关系，并且这一关系可以迅速变化，即用户所”扮演”的角色可以经常的发生变化；角色与权限之间也是多对多的关系，但是这一关系的变化则相对比较的缓慢，即角色拥有的权限是相对稳定。</li>
+<li>会话集合中的每个黑点代表一个会话，它控制一个用户的多个角色，有效的控制角色之间的冲突。</li>
+<li>即当一个被赋予多个角色的用户使用系统时，这些角色将分为属于若干个会话。</li>
+<li>用户在任一时间内，只激活一个会话，从而用户在该时间类仅能扮演该激活会话中所包含的角色，其他角色在该段时间将为禁用。</li>
+<li>使用<code>RBAC</code>模型能够通过用户授权(给用户指定角色)和角色授权(给角色分配操作权限)二个步骤实现完善的用户权限管理。<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2>然后随着云计算的出现，又出现了基于属性的访问控制<code>ABAC</code>，大家可以自行去查资料。基于属性的访问控制很厉害，它具有环境属性，而且可以把角色啊、客体啊、主体啊都当作一种属性，这种细粒度的访问控制安全性能很强，而且还能把数据挖掘的思想运用进来。</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/访问控制-基础知识/" rel="tag"># 访问控制 基础知识</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/02/Using-an-Access-Control-Matrix/" rel="next" title="Using-an-Access-Control-Matrix">
+                <i class="fa fa-chevron-left"></i> Using-an-Access-Control-Matrix
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">John Doe</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#访问控制模型一"><span class="nav-number">1.</span> <span class="nav-text">访问控制模型一</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#访问控制的概念"><span class="nav-number">1.1.</span> <span class="nav-text">访问控制的概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#访问控制的两个重要过程"><span class="nav-number">1.1.1.</span> <span class="nav-text">访问控制的两个重要过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#访问行为"><span class="nav-number">1.1.2.</span> <span class="nav-text">访问行为</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">1.2.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自主访问控制（DAC-Discretionary-Access-Control）"><span class="nav-number">1.3.</span> <span class="nav-text">自主访问控制（DAC,Discretionary Access Control）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#访问控制矩阵"><span class="nav-number">1.3.1.</span> <span class="nav-text">访问控制矩阵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#访问控制列表"><span class="nav-number">1.3.2.</span> <span class="nav-text">访问控制列表</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#强制访问控制（MAC）"><span class="nav-number">1.4.</span> <span class="nav-text">强制访问控制（MAC）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基于角色的访问控制（RBAC）"><span class="nav-number">1.5.</span> <span class="nav-text">基于角色的访问控制（RBAC）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#RBAC模型简介"><span class="nav-number">1.5.0.1.</span> <span class="nav-text">RBAC模型简介</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他"><span class="nav-number">1.6.</span> <span class="nav-text">其他</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

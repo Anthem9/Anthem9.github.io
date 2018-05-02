@@ -229,6 +229,192 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/02/访问控制模型一/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/02/访问控制模型一/" itemprop="url">访问控制模型一</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-02T22:35:28+08:00">
+                2018-05-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="访问控制模型一"><a href="#访问控制模型一" class="headerlink" title="访问控制模型一"></a>访问控制模型一</h1><h2 id="访问控制的概念"><a href="#访问控制的概念" class="headerlink" title="访问控制的概念"></a>访问控制的概念</h2><ul>
+<li><strong>访问控制</strong>，作为提供信息安全保障的主要手段，及最为突出的安全机制, 被广泛地应用于防火墙、文件访问、VPN及物理安全等多个方面。 所有这些技术可归诸于几类访问控制模型，本文将一一介绍并以实例说明，以帮助设计者在多变的环境中解决相关安全问题。</li>
+<li><strong>访问控制</strong>是信息安全保障机制的核心内容，它是实现<strong>数据保密性</strong>和<strong>完整性</strong>机制的主要手段。</li>
+<li><strong>访问控制</strong>是为了限制<strong>访问主体</strong>（或称为发起者，是一个主动的实体；如用户、进程、服务等），对<strong>访问客体</strong>（需要保护的资源）的访问权限，从而使计算机系统在合法范围内使用；</li>
+<li><strong>访问控制</strong>机制决定用户及代表一定用户利益的程序能做什么，及做到什么程度。</li>
+</ul>
+<h3 id="访问控制的两个重要过程"><a href="#访问控制的两个重要过程" class="headerlink" title="访问控制的两个重要过程"></a>访问控制的两个重要过程</h3><ul>
+<li>通过”鉴别（<code>authentication</code>）”来检验主体的合法身份</li>
+<li>通过”授权（<code>authorization</code>）”来限制用户对资源的访问级别</li>
+</ul>
+<h3 id="访问行为"><a href="#访问行为" class="headerlink" title="访问行为"></a>访问行为</h3><ul>
+<li>访问包括读取数据，更改数据，运行程序，发起连接等。</li>
+</ul>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><ul>
+<li>访问控制服务主要由<strong>访问控制模型</strong>和<strong>策略描述语言</strong>组成 </li>
+<li>常见的访问控制模型主要是自主访问控制 <code>DAC</code>、强制访问控制 <code>MAC</code>、基于角色的访问控制 <code>RBAC</code>。 </li>
+<li><strong>访问策略规则</strong>以及<strong>访问主体</strong>和<strong>访问客体</strong>三者是访问控制系统的基本条件。 </li>
+<li><strong>访问主体</strong>：在信息环境中，对目标信息的获取通常是由访问主体发起的，访问主体需要遵循相应的规则，从而可以访问一定的客体。通常访问主体是用户开发和使用的应用程度。 </li>
+<li><strong>访问客体</strong>：在信息系统中，客体可以被主体进行一定的访问行为操作。 </li>
+<li><strong>安全访问策略</strong>：是为了保护信息安全性而制定的策略规则，规定了主体是否可以访问客体以及可以使用何种方式对客体进行访问。 </li>
+<li>经典的三大模型<code>DAC</code>、<code>MAC</code>、<code>RBAC</code>，虽然现在在学术界这三大模型都遭到嫌弃，但是现有的访问控制模型其实都是在这三大模型上改改写写的。</li>
+</ul>
+<h2 id="自主访问控制（DAC-Discretionary-Access-Control）"><a href="#自主访问控制（DAC-Discretionary-Access-Control）" class="headerlink" title="自主访问控制（DAC,Discretionary Access Control）"></a>自主访问控制（DAC,Discretionary Access Control）</h2><ul>
+<li>自主访问控制（<code>DAC</code>,<code>Discretionary Access Control</code>）比较基础和常用，在多种计算机系统中都会提供自主访问控制。</li>
+<li>此种访问控制的基本思想是：访问控制中访问客体的拥有者具有很大的权限，能够决定客体是否可以被相应主体访问，并且可以迁移和转让访问客体。</li>
+<li>在 <code>DAC</code> 模型中，访问权限是否进行授权需要根据主体情况并结合具体的安全规则从而做出判断。</li>
+<li><code>DAC</code> 有<strong>访问控制矩阵</strong>和<strong>访问控制列表</strong>两种实施方式。 <h3 id="访问控制矩阵"><a href="#访问控制矩阵" class="headerlink" title="访问控制矩阵"></a>访问控制矩阵</h3>访问控制矩阵（<code>ACM</code>：<code>Acess Control Matrix</code>）中使用矩阵的列和行来分别对应访问主体和访问客体，二者交叉位置的元素则代表着相应的主体对客体的操作规则。<br><img src="https://github.com/Anthem9/vnote/raw/master/vnotebook/WebGoat/Access_Control_Flaws/_v_images/_1525256809_605.png" alt=""><h3 id="访问控制列表"><a href="#访问控制列表" class="headerlink" title="访问控制列表"></a>访问控制列表</h3></li>
+<li>访问控制列表（<code>ACL</code>：<code>Access Control List</code>）是前面说介绍矩阵的一种变形。</li>
+<li>列表对应某个固定客体，其中的列表示能够对此客体进行一定操作的主体。</li>
+<li>第二列访问属性则表示二者对应的具体操作。如表 所示，是上表中客体 X 所对应的等价控制矩阵转化。</li>
+<li>通过 <code>ACL</code> 可以方便的理解和查询某个客体所对应的特定权限主体，适用于稳定的主客体不太复杂的系统。在信息系统发生较大改变时，需要重新对访问控制列表进行相应修改，容易影响系统安全性。</li>
+</ul>
+<p><img src="https://github.com/Anthem9/vnote/raw/master/vnotebook/WebGoat/Access_Control_Flaws/_v_images/_1525256836_10032.png" alt=""></p>
+<p><code>DAC</code> 在进行授权时相对灵活，访问控制中客体的所有者可以将其所有用的权限进行转移，从而具有很好的灵活性，适用范围比较广，因而可以用于多个系统。但是，<code>DAC</code> 存在几个缺点：</p>
+<ul>
+<li>由于权限可以进行委托，会导致资源管理比较分散，同时增加了系统的风险性。 </li>
+<li>不能够适应多域安全策略环境，以及在环境策略变化的情况下无法保证整体的安全性。 </li>
+<li>访问控制权限容易发生转移，同时，在主体与客体数量较多时，会给系统带来巨大开销，导致效率低下，<strong>不能很好的适应交大规模的网络环境</strong>。</li>
+</ul>
+<h2 id="强制访问控制（MAC）"><a href="#强制访问控制（MAC）" class="headerlink" title="强制访问控制（MAC）"></a>强制访问控制（MAC）</h2><ul>
+<li>强制访问控制（<code>MAC</code>：<code>Mandatory Acess Control</code>）在十八世纪七十年代就已经提出，在 <code>Multics</code> 模型上得到最早使用和验证，与前面介绍的自主访问控制相比，定义规则和策略相对更加严格。</li>
+<li><code>MAC</code> 设计的基本思想是：在访问控制系统中，主体和客体被分配一定的安全属性，然后系统对二者所拥有的属性关系进行一定的评价比较，从而确定是否进行访问。</li>
+<li>也就是说这是一种多级表示模型。比较关系来源于安全属性，并且用（安全级别，类型集合）这样的组合代表安全属性。</li>
+<li>类型集合是指一定的元素的集体，而安全等级则表示相应信息的保密等级。在系统中安全属性是由维护系统的管理人员进行配置的，或者是系统自动生成的，这种安全属性是不能随意被修改的，具有强制认可性。 </li>
+<li><code>MAC</code> 具有强制性和严格的单向不可逆性。</li>
+<li><code>MAC</code> 系统规定高级别主体可以得到低级别主体的信息，而反过来却行不通。</li>
+<li>如果主体<code>A</code> 的级别高于客体<code>B</code>，那么主体 <code>A</code> 可以读取客体<code>B</code> 中的信息和资源；如果主体 <code>A</code> 的级别低于主体 <code>B</code> 的级别，那么主体 <code>A</code> 可以对主体 <code>B</code> 进行一定的诸如写入的操作；如果主体 <code>A</code>和客体<code>B</code>的等级是相同的，那么主体<code>A</code> 和客体 <code>B</code> 之间不能进行任何读与写的操作。</li>
+<li>这意味着在 <code>MAC</code> 模型的信息始终遵循单向流通的规则，因而可以保证系统信息的安全。如图 所示。</li>
+</ul>
+<p><img src="https://github.com/Anthem9/vnote/raw/master/vnotebook/WebGoat/Access_Control_Flaws/_v_images/_1525256893_20596.png" alt=""></p>
+<p>强制访问控制中最具有代表性的就是 <code>BLP</code> 模型。</p>
+<h2 id="基于角色的访问控制（RBAC）"><a href="#基于角色的访问控制（RBAC）" class="headerlink" title="基于角色的访问控制（RBAC）"></a>基于角色的访问控制（RBAC）</h2><ul>
+<li>基于角色的访问控制（<code>RBAC</code>）是在上世纪九十年代被提出，是一种评估效果比较好的访问控制信息技。</li>
+<li>在此种模型中，主体与客体并不是直接发生联系，而是增加了角色这一层次，先将访问操作的权限匹配给某些角色，然后在将这些特定的角色指定给相应的主体，通过这种方式主体就得到了对客体的访问权限。</li>
+</ul>
+<p><img src="https://github.com/Anthem9/vnote/raw/master/vnotebook/WebGoat/Access_Control_Flaws/_v_images/_1525256928_28770.png" alt=""></p>
+<p>基于角色使得主体和客体之间的关系不是通过他们之间的映射来建立，而是中间有了周转，多了一个角色这个中转站。</p>
+<h4 id="RBAC模型简介"><a href="#RBAC模型简介" class="headerlink" title="RBAC模型简介"></a>RBAC模型简介</h4><p><img src="https://github.com/Anthem9/vnote/raw/master/vnotebook/WebGoat/Access_Control_Flaws/_v_images/_1525258602_21653.png" alt=""></p>
+<ul>
+<li>模型中主要定义了：用户(<code>User</code>)，角色(<code>Role</code>)和用户权限（<code>Permission</code>）三个主要实体，以及会话(<code>Session</code>)和限制(<code>Constraint</code>)的概念及其之间的关系。</li>
+<li>其中，权限是指针对信息系统的操作权利，不同的角色或者不同级别的角色被赋予不同的权限，系统用户又被赋予一定的(一个或多个)角色。从而用户与角色之间，角色和权限之间均是一个多对多的<br>关系，用户和权限之间则没有直接的关系，而是根据所具有的责任被赋予某种角色，从而拥有角色相<br>应的权限。其授权模型示意图如上图所示。</li>
+<li>在<code>RBAC</code>模型中，角色是一个相对的概念，用户与角色之间是多对多的关系，并且这一关系可以迅速变化，即用户所”扮演”的角色可以经常的发生变化；角色与权限之间也是多对多的关系，但是这一关系的变化则相对比较的缓慢，即角色拥有的权限是相对稳定。</li>
+<li>会话集合中的每个黑点代表一个会话，它控制一个用户的多个角色，有效的控制角色之间的冲突。</li>
+<li>即当一个被赋予多个角色的用户使用系统时，这些角色将分为属于若干个会话。</li>
+<li>用户在任一时间内，只激活一个会话，从而用户在该时间类仅能扮演该激活会话中所包含的角色，其他角色在该段时间将为禁用。</li>
+<li>使用<code>RBAC</code>模型能够通过用户授权(给用户指定角色)和角色授权(给角色分配操作权限)二个步骤实现完善的用户权限管理。<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2>然后随着云计算的出现，又出现了基于属性的访问控制<code>ABAC</code>，大家可以自行去查资料。基于属性的访问控制很厉害，它具有环境属性，而且可以把角色啊、客体啊、主体啊都当作一种属性，这种细粒度的访问控制安全性能很强，而且还能把数据挖掘的思想运用进来。</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/02/Using-an-Access-Control-Matrix/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1565,185 +1751,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/25/打造Blog工具链/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/25/打造Blog工具链/" itemprop="url">打造Blog工具链</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-25T09:13:51+08:00">
-                2018-04-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="打造Blog工具链"><a href="#打造Blog工具链" class="headerlink" title="打造Blog工具链"></a>打造Blog工具链</h1><h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li>自从招新的时候学会了<code>Markdown</code>就爱上了这种编辑方式，手不离键盘就能完成格式的编辑。</li>
-<li>旧博客不支持<code>md</code>也是我换用<code>Hexo</code>的原因之一，虽然插件可以实现，但多数是将<code>md</code>转换为富文本，上传后再修改就很麻烦，这也是我不想使用<code>Evernote</code>和<code>Onenote</code>作为笔记管理系统的原因。</li>
-<li>另一个舍弃旧博客原因是，新的静态<code>Blog</code>不怕日，因为原本的服务器根本没做什么安全设置，密码为图方便也都是弱密码，想用服务器做点实验又怕影响到<code>Blog</code>的正常运行，现在OK了，随便折腾。</li>
-<li>当然用<code>github.io</code>的另一大好处就是免费，哈哈。</li>
-</ul>
-<h2 id="笔记管理系统"><a href="#笔记管理系统" class="headerlink" title="笔记管理系统"></a>笔记管理系统</h2><h3 id="我的需求"><a href="#我的需求" class="headerlink" title="我的需求"></a>我的需求</h3><ul>
-<li>支持<code>md</code></li>
-<li>能在网页端查阅</li>
-<li>能在多台电脑上同步写作</li>
-<li>能管理和添加<code>md</code>中的图片</li>
-<li>能添加附件</li>
-<li>免费</li>
-</ul>
-<p><code>Evernote</code> + <code>马克飞象</code> 基本能实现，但不免费也不能管理附件</p>
-<p>最后还是选择了<code>Vnote</code>和<code>Github</code>，不过这样做的缺点就是笔记谁都能看，这对我倒是无所谓，不想让人看的东西我一般不会写出来，或者写在纸质笔记本上，网络时代，现实当真是最好的加密[😀]。</p>
-<h3 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h3><ul>
-<li>实现了所有需求。</li>
-<li>不保护隐私，但可以付费使用私有仓库。</li>
-<li><code>Vnote</code>不能一次添加多张图片，但可以用<code>Typora</code>添加，再导入到<code>Vnote</code>，曲线救国。</li>
-<li><code>Vnote</code>左上角有个未实现的登录功能，可以期待。</li>
-<li><code>Vnote</code>是用<code>Python</code> + <code>QT5</code>写的，开源。</li>
-<li><code>Vnote</code>貌似不支持<code>tags</code>标记</li>
-</ul>
-<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul>
-<li><code>Git</code>上传时提示换行符不统一，但看起来没啥问题，先不管</li>
-<li><code>Vnote</code>的<code>Markdown</code>语法比<code>Typora</code>严格，稍加注意即可</li>
-</ul>
-<h2 id="Blog中md文档的图片外链"><a href="#Blog中md文档的图片外链" class="headerlink" title="Blog中md文档的图片外链"></a>Blog中md文档的图片外链</h2><h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><ul>
-<li>支持批量操作，方便快捷</li>
-<li>速度快</li>
-</ul>
-<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p><code>Vnote</code> + 查找替换</p>
-<p><code>Vnote</code>会自动把你添加的本地图片复制一份放在和这个<code>md</code>文档同目录下的一个<code>mage</code>文件中</p>
-<p>将笔记同步到<code>Github</code>后直接将<code>Github</code>上这个图片的<code>raw</code>链接除文件名的前半部分查找替换一下就OK</p>
-<h3 id="优缺点-1"><a href="#优缺点-1" class="headerlink" title="优缺点"></a>优缺点</h3><ul>
-<li>没试过其他图床，不知道快慢</li>
-<li><code>Vnote</code>使用外链时，在编辑模式下不能预览图片</li>
-<li>查找替换很方便，但感觉不是极致</li>
-</ul>
-<h2 id="md编辑器"><a href="#md编辑器" class="headerlink" title="md编辑器"></a>md编辑器</h2><h3 id="解决方案-1"><a href="#解决方案-1" class="headerlink" title="解决方案"></a>解决方案</h3><p><code>Typora</code></p>
-<p>没啥好说的，就是好用</p>
-<p>除了有些小地方自作聪明外，总的来说非常顺手，强烈安利。</p>
-<h2 id="hexo-n-“文章标题”"><a href="#hexo-n-“文章标题”" class="headerlink" title="hexo n “文章标题”"></a>hexo n “文章标题”</h2><p>上面这条命令是用<code>hexo</code>新建一篇文章的基本操作，使用这条命令，<code>hexo</code>会在文章目录下创建<code>文章标题.md</code>并在里面写入时间和标题等信息。</p>
-<p>这些操作完全可以手动或者写脚本完成。</p>
-<p>这里主要是为了文档在<code>Vnote</code>和<code>Blog</code>之间的转换。</p>
-<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ul>
-<li>如果<code>文章标题.md</code>已经存在，则生成<code>文章标题-1.md</code></li>
-<li>写入的信息必须严格按照原格式</li>
-</ul>
-<h3 id="优缺点-2"><a href="#优缺点-2" class="headerlink" title="优缺点"></a>优缺点</h3><ul>
-<li><code>Vnote</code>解析<code>hexo</code>在文档开头添加的信息时会误当成标题，很丑</li>
-</ul>
-<h2 id="其他未实现但想要实现的功能"><a href="#其他未实现但想要实现的功能" class="headerlink" title="其他未实现但想要实现的功能"></a>其他未实现但想要实现的功能</h2><ul>
-<li>在文章中方便地添加表情包</li>
-<li>快捷地完成<code>md</code>文档在<code>Vnote</code>和<code>Blog</code>之间地转换</li>
-</ul>
-<h2 id="4-25更新"><a href="#4-25更新" class="headerlink" title="4.25更新"></a>4.25更新</h2><ul>
-<li>从<code>Vnote</code>复制到<code>Typora</code>要选择粘贴为纯文本，不然特殊字符会被转义</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1794,7 +1801,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1807,7 +1814,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
