@@ -229,6 +229,387 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/25/蓝鲸文件管理系统心得体会/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/25/蓝鲸文件管理系统心得体会/" itemprop="url">蓝鲸文件管理系统心得体会</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-25T09:10:16+08:00">
+                2018-04-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="心得体会"><a href="#心得体会" class="headerlink" title="心得体会"></a>心得体会</h1><p><img src="https://github.com/Anthem9/vnote/raw/master/vnotebook/Web/wp/WhaleCTF/%E8%93%9D%E9%B2%B8%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fwp/_v_images/_1_1523261937_9730.jpg" alt="1"></p>
+<h2 id="绕过addslashes-的方法"><a href="#绕过addslashes-的方法" class="headerlink" title="绕过addslashes()的方法"></a>绕过addslashes()的方法</h2><ul>
+<li>宽字节注入</li>
+<li>二次注入</li>
+<li>url编码，json，base64编码</li>
+<li>反解压、反转义、数字型<h2 id="文件上传的三个关键点"><a href="#文件上传的三个关键点" class="headerlink" title="文件上传的三个关键点"></a>文件上传的三个关键点</h2></li>
+<li>上传</li>
+<li>解析</li>
+<li>访问<h2 id="代码审计"><a href="#代码审计" class="headerlink" title="代码审计"></a>代码审计</h2></li>
+<li>先看common.inc.php这样的全局配置文件</li>
+<li>上传功能的逻辑<br><img src="https://github.com/Anthem9/vnote/raw/master/vnotebook/Web/wp/WhaleCTF/%E8%93%9D%E9%B2%B8%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fwp/_v_images/_1524205523_26421.png" alt=""></li>
+<li>改名功能的逻辑<br><img src="https://github.com/Anthem9/vnote/raw/master/vnotebook/Web/wp/WhaleCTF/%E8%93%9D%E9%B2%B8%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fwp/_v_images/_1524205576_1773.png" alt=""></li>
+<li>个人感觉在解决CTF问题中理清Web应用的逻辑是极其重要的一点，虽然看起来很麻烦，但是实际上却能节省时间，能避免走弯路，思考的逻辑也能更清晰。<h2 id="思路和构造"><a href="#思路和构造" class="headerlink" title="思路和构造"></a>思路和构造</h2>思路：利用update注入将拓展名改为空，再将新文件名改为*.php即可</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> <span class="string">'file'</span> <span class="keyword">set</span> <span class="string">'filename'</span> = <span class="string">'新文件名'</span>, <span class="string">'oldname'</span> = <span class="string">'查询文件名'</span> <span class="keyword">where</span> <span class="string">'fid'</span> = fid</span><br><span class="line"><span class="keyword">update</span> <span class="string">'flie'</span> <span class="keyword">set</span> <span class="string">'filename'</span> = <span class="string">'Trojan.jpg'</span>, <span class="string">'oldname'</span> = <span class="string">''</span>,extension=<span class="string">''</span> <span class="keyword">where</span> <span class="string">'fid'</span> = fid</span><br></pre></td></tr></table></figure>
+<p>更新语句是用<code>fid</code>字段进行定位的，在<code>rename.php</code>的<code>oldname</code>字段中输入<code>’,extension=’</code>由于转义并不能起到注入的效果，但能找到fid。</p>
+<p><img src="https://github.com/Anthem9/vnote/raw/master/vnotebook/Web/wp/WhaleCTF/%E8%93%9D%E9%B2%B8%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fwp/_v_images/_1524205600_12431.png" alt=""></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/24/2018-4-24-新Blog/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/24/2018-4-24-新Blog/" itemprop="url">2018.4.24 新Blog</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-24T22:26:40+08:00">
+                2018-04-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>今天终于把Blog搭好了，本来打算自己用Flask写一个，终于是被无休止的依赖问题打崩。</p>
+<p>新Blog用的是Hexo驱动，主题是Next，还比较丑，比较空，但没关系，先实现了再说，总之要养成常写Blog的好习惯。</p>
+<p>立个Flag先：每天更新</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/24/hexo-d没有反应的坑/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/24/hexo-d没有反应的坑/" itemprop="url">hexo d没有反应的坑</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-24T21:55:16+08:00">
+                2018-04-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>如下图没任何反应，不知道成功或失败，反正github上没有变化<img src="http://i1.bvimg.com/642990/18ab4482d58292a5.jpg" alt="Markdown"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<p>最大的坑就是配置文件，必须严格按照那特定的格式，可是官方文档也没特别提醒，必须是这个格式，<code>type</code>，<code>repo</code>，<code>branch</code>前两个空格，<code>：</code>后面一个空格，差一个都不行的：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span> </span><br><span class="line"></span><br><span class="line"><span class="attr">  type:</span> <span class="string">git</span> </span><br><span class="line"></span><br><span class="line"><span class="attr">  repository:</span> <span class="string">url</span> </span><br><span class="line"></span><br><span class="line"><span class="attr">  branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/24/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -394,7 +775,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -407,7 +788,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>

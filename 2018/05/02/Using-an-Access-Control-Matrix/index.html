@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="WebGoat Web CTF," />
+  <meta name="keywords" content="WebGoat Access-Control-Flaws Web CTF," />
 
 
 
@@ -79,18 +79,21 @@
 
 
 
-<meta name="description" content="WebGoat启程前言&amp;amp;闲聊前几天给一个国外的留学生做他们的信息安全课程的作业，其中就有WebGoat的部分，感觉这个靶场很不错，于是决定来刷一波。 WebGoat简介 WebGoat是一个用于讲解典型web漏洞的基于J2EE架构的web应用，他由著名的WEB应用安全研究组织OWASP精心设计并不断更新。WebGoat本身是一系列教程，其中设计了大量的web缺陷，一步步的指导用户如何去利用">
-<meta name="keywords" content="WebGoat Web CTF">
+<meta name="description" content="Using_an_Access_Control_Matrix使用访问控制模型 技术概念或主题（Concept / Topic To Teach） In a role-based access control scheme, a role represents a set of access permissions and privileges. A user can be assigned one">
+<meta name="keywords" content="WebGoat Access-Control-Flaws Web CTF">
 <meta property="og:type" content="article">
-<meta property="og:title" content="WebGoat启程">
-<meta property="og:url" content="http://yoursite.com/2018/05/02/WebGoat启程/index.html">
+<meta property="og:title" content="Using-an-Access-Control-Matrix">
+<meta property="og:url" content="http://yoursite.com/2018/05/02/Using-an-Access-Control-Matrix/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="WebGoat启程前言&amp;amp;闲聊前几天给一个国外的留学生做他们的信息安全课程的作业，其中就有WebGoat的部分，感觉这个靶场很不错，于是决定来刷一波。 WebGoat简介 WebGoat是一个用于讲解典型web漏洞的基于J2EE架构的web应用，他由著名的WEB应用安全研究组织OWASP精心设计并不断更新。WebGoat本身是一系列教程，其中设计了大量的web缺陷，一步步的指导用户如何去利用">
+<meta property="og:description" content="Using_an_Access_Control_Matrix使用访问控制模型 技术概念或主题（Concept / Topic To Teach） In a role-based access control scheme, a role represents a set of access permissions and privileges. A user can be assigned one">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-05-02T00:59:59.574Z">
+<meta property="og:image" content="https://github.com/Anthem9/vnote/raw/master/vnotebook/WebGoat/Access_Control_Flaws/_v_images/_1525229245_8386.png">
+<meta property="og:image" content="https://github.com/Anthem9/vnote/raw/master/vnotebook/WebGoat/Access_Control_Flaws/_v_images/_1525229372_2326.png">
+<meta property="og:updated_time" content="2018-05-02T03:05:10.996Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="WebGoat启程">
-<meta name="twitter:description" content="WebGoat启程前言&amp;amp;闲聊前几天给一个国外的留学生做他们的信息安全课程的作业，其中就有WebGoat的部分，感觉这个靶场很不错，于是决定来刷一波。 WebGoat简介 WebGoat是一个用于讲解典型web漏洞的基于J2EE架构的web应用，他由著名的WEB应用安全研究组织OWASP精心设计并不断更新。WebGoat本身是一系列教程，其中设计了大量的web缺陷，一步步的指导用户如何去利用">
+<meta name="twitter:title" content="Using-an-Access-Control-Matrix">
+<meta name="twitter:description" content="Using_an_Access_Control_Matrix使用访问控制模型 技术概念或主题（Concept / Topic To Teach） In a role-based access control scheme, a role represents a set of access permissions and privileges. A user can be assigned one">
+<meta name="twitter:image" content="https://github.com/Anthem9/vnote/raw/master/vnotebook/WebGoat/Access_Control_Flaws/_v_images/_1525229245_8386.png">
 
 
 
@@ -120,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/05/02/WebGoat启程/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/05/02/Using-an-Access-Control-Matrix/"/>
 
 
 
 
 
-  <title>WebGoat启程 | Hexo</title>
+  <title>Using-an-Access-Control-Matrix | Hexo</title>
   
 
 
@@ -233,7 +236,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/02/WebGoat启程/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/02/Using-an-Access-Control-Matrix/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -250,7 +253,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">WebGoat启程</h1>
+          <h1 class="post-title" itemprop="name headline">Using-an-Access-Control-Matrix</h1>
         
 
         <div class="post-meta">
@@ -262,7 +265,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-02T06:33:43+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-02T11:03:27+08:00">
                 2018-05-02
               </time>
             
@@ -300,25 +303,27 @@
       
 
       
-        <h1 id="WebGoat启程"><a href="#WebGoat启程" class="headerlink" title="WebGoat启程"></a>WebGoat启程</h1><h2 id="前言-amp-闲聊"><a href="#前言-amp-闲聊" class="headerlink" title="前言&amp;闲聊"></a>前言&amp;闲聊</h2><p>前几天给一个国外的留学生做他们的信息安全课程的作业，其中就有<code>WebGoat</code>的部分，感觉这个靶场很不错，于是决定来刷一波。</p>
-<h2 id="WebGoat简介"><a href="#WebGoat简介" class="headerlink" title="WebGoat简介"></a>WebGoat简介</h2><blockquote>
-<p><code>WebGoat</code>是一个用于讲解典型<code>web</code>漏洞的基于<code>J2EE</code>架构的<code>web</code>应用，他由著名的<code>WEB</code>应用安全研究组织<code>OWASP</code>精心设计并不断更新。<code>WebGoat</code>本身是一系列教程，其中设计了大量的<code>web</code>缺陷，一步步的指导用户如何去利用这些漏洞进行攻击，同时也指出了如何在程序设计和编码时避免这些漏洞。<code>Web</code>应用程序的设计者和测试者都可以在<code>WebGoat</code>中找到自己感兴趣的部分。虽然<code>WebGoat</code>中对于如何利用漏洞给出了大量的解释，但是还是比较有限，尤其是对于初学者来说，但觉得这正是其特色之处：<code>WebGoat</code>的每个教程都明确告诉你存在什么漏洞，但是如何去攻破要你自己去查阅资料，了解该漏洞的原理、特征和攻击方法，甚至要自己去找攻击辅助工具，当你成功时，<code>WebGoat</code>会给出一个红色的<code>Congratulation</code>，让你很有成就感！<br>[看雪论坛]</p>
+        <h1 id="Using-an-Access-Control-Matrix"><a href="#Using-an-Access-Control-Matrix" class="headerlink" title="Using_an_Access_Control_Matrix"></a>Using_an_Access_Control_Matrix</h1><p>使用访问控制模型<br><img src="https://github.com/Anthem9/vnote/raw/master/vnotebook/WebGoat/Access_Control_Flaws/_v_images/_1525229245_8386.png" alt=""></p>
+<h2 id="技术概念或主题（Concept-Topic-To-Teach）"><a href="#技术概念或主题（Concept-Topic-To-Teach）" class="headerlink" title="技术概念或主题（Concept / Topic To Teach）"></a>技术概念或主题（Concept / Topic To Teach）</h2><blockquote>
+<p>In a role-based access control scheme, a role represents a set of access permissions and privileges. A user can be assigned one or more roles. A role-based access control scheme normally consists of two parts: role permission management and role assignment. A broken role-based access control scheme might allow a user to perform accesses that are not allowed by his/her assigned roles, or somehow allow privilege escalation to an unauthorized role.</p>
 </blockquote>
-<h2 id="WebGoat部署"><a href="#WebGoat部署" class="headerlink" title="WebGoat部署"></a>WebGoat部署</h2><p>使用docker<br><figure class="highlight docker"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker pull webgoat/webgoat-<span class="number">7.1</span></span><br><span class="line">docker <span class="keyword">run</span><span class="bash"> -p 8080:8080 -idt webgoat/webgoat-7.1</span></span><br></pre></td></tr></table></figure></p>
-<p>打开<code>192.168.99.100:8080/WebGoat</code></p>
-<h2 id="工具使用"><a href="#工具使用" class="headerlink" title="工具使用"></a>工具使用</h2><ul>
-<li>Burp Suite</li>
-<li>开发者工具</li>
-</ul>
-<hr>
-<p>date: 2018-05-02 08:58:43</p>
-<hr>
-<h2 id="WriteUp格式"><a href="#WriteUp格式" class="headerlink" title="WriteUp格式"></a>WriteUp格式</h2><ul>
-<li><p>一般来说直接复制英文的教程，其中一些跟教程不一样或者有些自己的理解的地方，会给出中文注释</p>
-</li>
-<li><p>不光是完成<code>WebGoat</code>的目标，大部分内容都会有相应的拓展。</p>
-</li>
-</ul>
+<blockquote>
+<p>在一个基于角色的访问控制方案中，角色代表了一组访问权限和特权。一个用户可以被<br>分配一个或多个角色。一个基于角色的访问控制方案通常有两个部分组成：角色权限管理和<br>角色分配。一个被破坏的基于角色的访问控制方案可能允许用户执行不允许他/她的被分配<br>的角色，或以某种方式允许特权升级到未经授权的角色的访问。</p>
+</blockquote>
+<h2 id="技术原理（How-It-works）"><a href="#技术原理（How-It-works）" class="headerlink" title="技术原理（How It works）"></a>技术原理（How It works）</h2><p>这个控制方案本身有缺陷</p>
+<h2 id="总体目标（General-Goals）"><a href="#总体目标（General-Goals）" class="headerlink" title="总体目标（General Goals）"></a>总体目标（General Goals）</h2><blockquote>
+<p>Each user is a member of a role that is allowed to access only certain resources. Your goal is to explore the access control rules that govern this site. Only the [Admin] group should have access to the ‘Account Manager’ resource.</p>
+</blockquote>
+<blockquote>
+<p>每个用户都是角色的成员，每个角色只允许访问那些特定的资源。您的目标是浏览本站<br>管理所使用的访问控制规则。只有“Admin”组才能够访问“帐号管理”资源。</p>
+</blockquote>
+<h2 id="操作方法（Solutions）"><a href="#操作方法（Solutions）" class="headerlink" title="操作方法（Solutions）"></a>操作方法（Solutions）</h2><blockquote>
+<p>This exercise is straightforward. You need to find a user where you can access a resource that you shouldn’t be able to access.</p>
+</blockquote>
+<p><img src="https://github.com/Anthem9/vnote/raw/master/vnotebook/WebGoat/Access_Control_Flaws/_v_images/_1525229372_2326.png" alt=""></p>
+<blockquote>
+<p>After a few attempts you will learn that Larry can access resources of the role Account Manager.</p>
+</blockquote>
 
       
     </div>
@@ -336,7 +341,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/WebGoat-Web-CTF/" rel="tag"># WebGoat Web CTF</a>
+            <a href="/tags/WebGoat-Access-Control-Flaws-Web-CTF/" rel="tag"># WebGoat Access-Control-Flaws Web CTF</a>
           
         </div>
       
@@ -349,8 +354,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/28/2018-4-28-周记/" rel="next" title="2018.4.28 周记">
-                <i class="fa fa-chevron-left"></i> 2018.4.28 周记
+              <a href="/2018/05/02/HTTP请求报文/" rel="next" title="HTTP请求报文">
+                <i class="fa fa-chevron-left"></i> HTTP请求报文
               </a>
             
           </div>
@@ -358,10 +363,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/05/02/WebGoat-General-HTTP-Basics/" rel="prev" title="WebGoat_General_HTTP_Basics">
-                WebGoat_General_HTTP_Basics <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -484,7 +485,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#WebGoat启程"><span class="nav-number">1.</span> <span class="nav-text">WebGoat启程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言-amp-闲聊"><span class="nav-number">1.1.</span> <span class="nav-text">前言&amp;闲聊</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WebGoat简介"><span class="nav-number">1.2.</span> <span class="nav-text">WebGoat简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WebGoat部署"><span class="nav-number">1.3.</span> <span class="nav-text">WebGoat部署</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#工具使用"><span class="nav-number">1.4.</span> <span class="nav-text">工具使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WriteUp格式"><span class="nav-number">1.5.</span> <span class="nav-text">WriteUp格式</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Using-an-Access-Control-Matrix"><span class="nav-number">1.</span> <span class="nav-text">Using_an_Access_Control_Matrix</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#技术概念或主题（Concept-Topic-To-Teach）"><span class="nav-number">1.1.</span> <span class="nav-text">技术概念或主题（Concept / Topic To Teach）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#技术原理（How-It-works）"><span class="nav-number">1.2.</span> <span class="nav-text">技术原理（How It works）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总体目标（General-Goals）"><span class="nav-number">1.3.</span> <span class="nav-text">总体目标（General Goals）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作方法（Solutions）"><span class="nav-number">1.4.</span> <span class="nav-text">操作方法（Solutions）</span></a></li></ol></li></ol></div>
             
 
           </div>
