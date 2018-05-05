@@ -229,6 +229,279 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/05/LAB-DOM-Based-cross-site-scripting/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/05/LAB-DOM-Based-cross-site-scripting/" itemprop="url">LAB-DOM-Based-cross-site-scripting</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-05T19:46:57+08:00">
+                2018-05-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="LAB-DOM-Based-cross-site-scripting"><a href="#LAB-DOM-Based-cross-site-scripting" class="headerlink" title="LAB_DOM-Based_cross-site_scripting"></a>LAB_DOM-Based_cross-site_scripting</h1><h2 id="技术概念或主题（Concept-Topic-To-Teach）"><a href="#技术概念或主题（Concept-Topic-To-Teach）" class="headerlink" title="技术概念或主题（Concept / Topic To Teach）"></a>技术概念或主题（Concept / Topic To Teach）</h2><p>The Document Object Model (DOM) presents an interesting problem from a security standpoint. It allows the content of a web page to be dynamically modified, but that can be abused by attackers during a malicious code injection. XSS, a type of malicious code injection, can occur when unvalidated user input is used directly to modify the content of a page on the client side. </p>
+<p>文档对象模型（DOM）从安全的角度展现了一个有趣的问题。它允许动态修改网页内容，但是这可以被攻击者用来进行恶意代码注入攻击。XSS，一种恶意代码注入，一般会发生在未经验证的用户的输入直接修改了在客户端的页面内容的情况下。</p>
+<h2 id="技术原理（How-It-works）"><a href="#技术原理（How-It-works）" class="headerlink" title="技术原理（How It works）"></a>技术原理（How It works）</h2><p>HTML DOM 实体中可随时插入新的 HTML 语句或 JavaScript 语句，因此很容易被恶意代码利用，从而用来改变页面显示内容或执行恶意代码。</p>
+<p>HTML 标记语言中很多标签的特殊属性参数中允许插入 JS 代码，如：IMG/IFRAME 等。</p>
+<h2 id="总体目标（General-Goals）"><a href="#总体目标（General-Goals）" class="headerlink" title="总体目标（General Goals）"></a>总体目标（General Goals）</h2><p>For this exercise, your mission is to use this vulnerability to inject malicious code into the DOM. Then in the last stage, you will correct the flaws in the code to address the vulnerability. </p>
+<p>在这个练习中，您的任务是利用此漏洞将恶意代码注入到 DOM，然后在最后阶段，通过修改代码来修复这个缺陷，从而解决该漏洞。</p>
+<h2 id="操作方法（Solutions）"><a href="#操作方法（Solutions）" class="headerlink" title="操作方法（Solutions）"></a>操作方法（Solutions）</h2><h3 id="STAGE-1"><a href="#STAGE-1" class="headerlink" title="STAGE 1"></a>STAGE 1</h3><p><img src="https://github.com/Anthem9/vnote/raw/master/vnotebook/WebGoat/AJAX_Security/_v_images/_1524707693_10761.png" alt=""></p>
+<ul>
+<li><p>Enter “<code>&lt;IMG SRC=&quot;images/logos/owasp.jpg&quot;/&gt;</code>“ and submit the solution.</p>
+<h3 id="STAGE-2"><a href="#STAGE-2" class="headerlink" title="STAGE 2"></a>STAGE 2</h3><p><img src="https://github.com/Anthem9/vnote/raw/master/vnotebook/WebGoat/AJAX_Security/_v_images/_1524707764_13125.png" alt=""></p>
+</li>
+<li><p>Enter “<code>&lt;img src=x onerror=;;alert(&#39;XSS&#39;) /&gt;</code>“ and submit the solution.</p>
+<h3 id="STAGE-3"><a href="#STAGE-3" class="headerlink" title="STAGE 3"></a>STAGE 3</h3><p><img src="https://github.com/Anthem9/vnote/raw/master/vnotebook/WebGoat/AJAX_Security/_v_images/_1524707874_18154.png" alt=""></p>
+</li>
+<li><p>Enter “<code>&lt;IFRAME SRC=&quot;javascript:alert(&#39;XSS&#39;);&quot;&gt;&lt;/IFRAME&gt;</code>“ and submit the solution.</p>
+<h3 id="STAGE-4"><a href="#STAGE-4" class="headerlink" title="STAGE 4"></a>STAGE 4</h3><p><img src="https://github.com/Anthem9/vnote/raw/master/vnotebook/WebGoat/AJAX_Security/_v_images/_1524708069_20706.png" alt=""></p>
+</li>
+<li><p>Enter “<code>Please enter your password:&lt;BR&gt;&lt;input type = &quot;password&quot; name=&quot;pass&quot;/&gt;&lt;button onClick=&quot;javascript:alert(&#39;I have your password: &#39; + pass.value);&quot;&gt;Submit&lt;/button&gt;&lt;BR&gt;&lt;BR&gt;&lt;BR&gt;&lt;BR&gt;&lt;BR&gt;&lt;BR&gt;&lt;BR&gt;&lt;BR&gt; &lt;BR&gt;&lt;BR&gt;&lt;BR&gt;&lt;BR&gt;&lt;BR&gt;&lt;BR&gt;&lt;BR&gt;&lt;BR&gt;</code>“ and submit the solution.</p>
+<h3 id="STAGE-5"><a href="#STAGE-5" class="headerlink" title="STAGE 5"></a>STAGE 5</h3><p><img src="https://github.com/Anthem9/vnote/raw/master/vnotebook/WebGoat/AJAX_Security/_v_images/_1524726932_17994.png" alt=""></p>
+</li>
+<li>Modify <code>DOMXSS.js</code>, add <code>escapeHTML()</code> in <code>name</code>, ie <code>escapeHTML(name)</code>, then save it.<br><img src="https://github.com/Anthem9/vnote/raw/master/vnotebook/WebGoat/AJAX_Security/_v_images/_1524726820_7375.png" alt=""></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/05/LAB-Client-Side-Filtering/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/05/LAB-Client-Side-Filtering/" itemprop="url">LAB-Client-Side-Filtering</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-05T19:41:52+08:00">
+                2018-05-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="LAB-Client-Side-Filtering"><a href="#LAB-Client-Side-Filtering" class="headerlink" title="LAB_Client_Side_Filtering"></a>LAB_Client_Side_Filtering</h1><h2 id="技术概念或主题（Concept-Topic-To-Teach）"><a href="#技术概念或主题（Concept-Topic-To-Teach）" class="headerlink" title="技术概念或主题（Concept / Topic To Teach）"></a>技术概念或主题（Concept / Topic To Teach）</h2><p>It is always a good practice to send to the client only information which they are supposed to have access to. In this lesson, too much information is being sent to the client, creating a serious access control problem. </p>
+<p>## </p>
+<h2 id="技术原理（How-It-works）"><a href="#技术原理（How-It-works）" class="headerlink" title="技术原理（How It works）"></a>技术原理（How It works）</h2><p>服务端与客户端数据交互过程虽然被页面代码进行了隐藏，但仍然可以通过 Firebug、IEWatch、WebScarab 等工具捕获到，直接显示在用户眼前。</p>
+<h2 id="总体目标（General-Goals）"><a href="#总体目标（General-Goals）" class="headerlink" title="总体目标（General Goals）"></a>总体目标（General Goals）</h2><p>For this exercise, your mission is exploit the extraneous information being returned by the server to discover information to which you should not have access. </p>
+<h2 id="操作方法（Solutions）"><a href="#操作方法（Solutions）" class="headerlink" title="操作方法（Solutions）"></a>操作方法（Solutions）</h2><h3 id="STAGE-1"><a href="#STAGE-1" class="headerlink" title="STAGE 1"></a>STAGE 1</h3><p><img src="https://github.com/Anthem9/vnote/raw/master/vnotebook/WebGoat/AJAX_Security/_v_images/_1524728212_27520.png" alt=""></p>
+<ul>
+<li>Press F12 and find <code>id=&quot;hiddenEmployeeRecords&quot;</code>, then find <code>id=&quot;112&quot;</code></li>
+</ul>
+<h3 id="STAGE-2"><a href="#STAGE-2" class="headerlink" title="STAGE 2"></a>STAGE 2</h3><p><img src="https://github.com/Anthem9/vnote/raw/master/vnotebook/WebGoat/AJAX_Security/_v_images/_1524729085_24441.png" alt=""></p>
+<ul>
+<li>Find clientSideFiltering.jsp file and modify the fields in the figure as shown below</li>
+</ul>
+<p><img src="https://github.com/Anthem9/vnote/raw/master/vnotebook/WebGoat/AJAX_Security/_v_images/_1524729109_7936.png" alt=""></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/04/LAB-Role-Based-Access-Control/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1571,280 +1844,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/02/WebGoat-General-HTTP-Basics/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/02/WebGoat-General-HTTP-Basics/" itemprop="url">WebGoat_General_HTTP_Basics</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-02T09:03:41+08:00">
-                2018-05-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="WebGoat-HTTP-basics"><a href="#WebGoat-HTTP-basics" class="headerlink" title="WebGoat_HTTP_basics"></a>WebGoat_HTTP_basics</h1><p><img src="https://github.com/Anthem9/vnote/raw/master/vnotebook/WebGoat/_v_images/_1525221121_20356.png" alt=""></p>
-<h2 id="技术概念或主题（Concept-Topic-To-Teach）"><a href="#技术概念或主题（Concept-Topic-To-Teach）" class="headerlink" title="技术概念或主题（Concept / Topic To Teach）"></a>技术概念或主题（Concept / Topic To Teach）</h2><p>This lesson presents the basics for understanding the transfer of data between the browser and the web application.</p>
-<h2 id="技术原理（How-It-works）"><a href="#技术原理（How-It-works）" class="headerlink" title="技术原理（How It works）"></a>技术原理（How It works）</h2><p>Client Request: How HTTP works:</p>
-<p>All HTTP transactions follow the same general format. Each client request and server response has three parts: <strong>the request or response line</strong>, <strong>a header section</strong>, and <strong>the entity body</strong>. The client initiates a transaction as follows: </p>
-<p>The client contacts the server and sends a document request<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /index.html?param=value HTTP/1.0</span><br></pre></td></tr></table></figure></p>
-<p>Next, the client sends optional header information to inform the server of its configuration and the document formats it will accept.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">User-Agent: Mozilla/4.06 Accept: image/gif, image/jpeg, */*</span><br></pre></td></tr></table></figure></p>
-<p>After sending the request and headers, the client may send additional data. This data is mostly used by CGI programs using the POST method.</p>
-<h2 id="总体目标（General-Goals）"><a href="#总体目标（General-Goals）" class="headerlink" title="总体目标（General Goals）"></a>总体目标（General Goals）</h2><ul>
-<li>Enter your name in the input field below and press “go” to submit. The server will accept the request, reverse the input, and display it back to the user, illustrating the basics of handling an HTTP request. </li>
-<li>练习使用抓包工具<h2 id="操作方法（Solutions）"><a href="#操作方法（Solutions）" class="headerlink" title="操作方法（Solutions）"></a>操作方法（Solutions）</h2></li>
-<li>设置浏览器代理，抓包，没啥好说的</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/02/WebGoat启程/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/02/WebGoat启程/" itemprop="url">WebGoat启程</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-02T06:33:43+08:00">
-                2018-05-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="WebGoat启程"><a href="#WebGoat启程" class="headerlink" title="WebGoat启程"></a>WebGoat启程</h1><h2 id="前言-amp-闲聊"><a href="#前言-amp-闲聊" class="headerlink" title="前言&amp;闲聊"></a>前言&amp;闲聊</h2><p>前几天给一个国外的留学生做他们的信息安全课程的作业，其中就有<code>WebGoat</code>的部分，感觉这个靶场很不错，于是决定来刷一波。</p>
-<h2 id="WebGoat简介"><a href="#WebGoat简介" class="headerlink" title="WebGoat简介"></a>WebGoat简介</h2><blockquote>
-<p><code>WebGoat</code>是一个用于讲解典型<code>web</code>漏洞的基于<code>J2EE</code>架构的<code>web</code>应用，他由著名的<code>WEB</code>应用安全研究组织<code>OWASP</code>精心设计并不断更新。<code>WebGoat</code>本身是一系列教程，其中设计了大量的<code>web</code>缺陷，一步步的指导用户如何去利用这些漏洞进行攻击，同时也指出了如何在程序设计和编码时避免这些漏洞。<code>Web</code>应用程序的设计者和测试者都可以在<code>WebGoat</code>中找到自己感兴趣的部分。虽然<code>WebGoat</code>中对于如何利用漏洞给出了大量的解释，但是还是比较有限，尤其是对于初学者来说，但觉得这正是其特色之处：<code>WebGoat</code>的每个教程都明确告诉你存在什么漏洞，但是如何去攻破要你自己去查阅资料，了解该漏洞的原理、特征和攻击方法，甚至要自己去找攻击辅助工具，当你成功时，<code>WebGoat</code>会给出一个红色的<code>Congratulation</code>，让你很有成就感！<br>[看雪论坛]</p>
-</blockquote>
-<h2 id="WebGoat部署"><a href="#WebGoat部署" class="headerlink" title="WebGoat部署"></a>WebGoat部署</h2><p>使用docker<br><figure class="highlight docker"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker pull webgoat/webgoat-<span class="number">7.1</span></span><br><span class="line">docker <span class="keyword">run</span><span class="bash"> -p 8080:8080 -idt webgoat/webgoat-7.1</span></span><br></pre></td></tr></table></figure></p>
-<p>打开<code>192.168.99.100:8080/WebGoat</code></p>
-<h2 id="工具使用"><a href="#工具使用" class="headerlink" title="工具使用"></a>工具使用</h2><ul>
-<li>Burp Suite</li>
-<li>开发者工具</li>
-</ul>
-<hr>
-<p>date: 2018-05-02 08:58:43</p>
-<hr>
-<h2 id="WriteUp格式"><a href="#WriteUp格式" class="headerlink" title="WriteUp格式"></a>WriteUp格式</h2><ul>
-<li><p>一般来说直接复制英文的教程，其中一些跟教程不一样或者有些自己的理解的地方，会给出中文注释</p>
-</li>
-<li><p>不光是完成<code>WebGoat</code>的目标，大部分内容都会有相应的拓展。</p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1890,7 +1894,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1903,7 +1907,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
